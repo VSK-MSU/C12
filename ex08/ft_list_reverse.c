@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/30 16:03:50 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 20:16:57 by ezaynabi         ###   ########.fr       */
+/*   Created: 2020/07/30 21:13:29 by ezaynabi          #+#    #+#             */
+/*   Updated: 2020/07/30 22:24:36 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "fft_list.h"
+#include <stdlib.h>
 
-t_list	*ft_list_push_strs(int size, char **strs)
+void	ft_list_reverse(t_list **begin_list)
 {
 	t_list	*list;
-	t_list	*current_list;
+	t_list	*nxt;
+	t_list	*buffer;
 
-	if (size > 0)
+	nxt = NULL;
+	list = *begin_list;
+	if(!list || !list->next)
+		return;
+	nxt = list->next;
+	buffer = nxt->next;
+	list->next = NULL;
+	while (buffer)
 	{
-		size--;
-		list = ft_create_elem(strs[size]);
-		current_list = list;
-		while (size > 0)
-		{
-			size--;
-			current_list->next = ft_create_elem(strs[size--]);
-			current_list = current_list->next;
-		}
-		return (list);
+		list = nxt;
+		nxt = buffer;
+		buffer = buffer->next;
+		nxt->next = list;
 	}
-	else
-	{
-		list = ft_create_elem(void);
-		return (list);
-	}
+	*begin_list = tmp
 }

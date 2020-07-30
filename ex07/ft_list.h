@@ -6,7 +6,7 @@
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 18:49:05 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 19:28:48 by ezaynabi         ###   ########.fr       */
+/*   Updated: 2020/07/30 22:25:45 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef	struct		s_list
 
 }					t_list;
 
-t_list	*ft_create_elem(void *data);
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *));
+t_list				*ft_create_elem(void *data);
+t_list				*ft_list_at(t_list *begin_list, unsigned int nbr);
 
 #endif

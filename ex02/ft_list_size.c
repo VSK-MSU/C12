@@ -6,7 +6,7 @@
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 19:21:32 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 13:43:32 by ezaynabi         ###   ########.fr       */
+/*   Updated: 2020/07/30 20:19:41 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_list_size(t_list *begin_list)
 {
 	t_list	*list;
 	int		counter;
-	
+
 	counter = 0;
 	list = begin_list;
 	while (list->next)
