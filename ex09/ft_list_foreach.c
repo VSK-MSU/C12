@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/30 18:07:54 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 22:55:55 by ezaynabi         ###   ########.fr       */
+/*   Created: 2020/07/30 22:51:02 by ezaynabi          #+#    #+#             */
+/*   Updated: 2020/07/30 22:56:29 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	t_list	*curr;
-	t_list	*nxt;
+	t_list	*list;
 
-	if (begin_list)
+	list = begin_list;
+	while (list)
 	{
-		curr = begin_list;
-		(*free_fct)(curr);
-		nxt = curr->next;
-		curr->next = NULL;
-		free(curr);
-		while (nxt)
-		{
-			curr = nxt;
-			nxt = curr->next;
-			(*free_fct)(curr->data);
-			curr->next = NULL;
-			free(curr);
-		}
+		(*f)(list->data);
+		list = list->next;
 	}
 }

@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/30 18:07:54 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 22:55:55 by ezaynabi         ###   ########.fr       */
+/*   Created: 2020/07/29 18:49:05 by ezaynabi          #+#    #+#             */
+/*   Updated: 2020/07/30 22:57:28 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+typedef	struct		s_list
 {
-	t_list	*curr;
-	t_list	*nxt;
+	struct s_list	*next;
+	void			*data;
 
-	if (begin_list)
-	{
-		curr = begin_list;
-		(*free_fct)(curr);
-		nxt = curr->next;
-		curr->next = NULL;
-		free(curr);
-		while (nxt)
-		{
-			curr = nxt;
-			nxt = curr->next;
-			(*free_fct)(curr->data);
-			curr->next = NULL;
-			free(curr);
-		}
-	}
-}
+}					t_list;
+
+t_list				*ft_create_elem(void *data);
+void				ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+#endif
