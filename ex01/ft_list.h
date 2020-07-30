@@ -6,7 +6,7 @@
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 18:49:05 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/29 19:18:55 by ezaynabi         ###   ########.fr       */
+/*   Updated: 2020/07/30 16:46:23 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ typedef	struct		s_list
 }					t_list;
 
 t_list	*ft_create_elem(void *data);
+void	ft_list_push_front(t_list **begin_list, void *data);
 
 #endif

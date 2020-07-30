@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 18:49:05 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 16:47:15 by ezaynabi         ###   ########.fr       */
+/*   Created: 2020/07/30 16:03:50 by ezaynabi          #+#    #+#             */
+/*   Updated: 2020/07/30 18:11:40 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_list.h"
 
-typedef	struct		s_list
+t_list	*ft_list_push_strs(int size, char **strs)
 {
-	struct s_list	*next;
-	void			*data;
+	t_list	*list;
+	t_list	*current_list;
 
-}					t_list;
-
-t_list	*ft_create_elem(void *data);
-t_list	*ft_list_last(t_list *begin_list);
-
-#endif
+	if(size > 0)
+	{
+		size--;
+		list = ft_create_elem(strs[size]);
+		current_list = list;
+		while (size > 0)
+		{
+			size--;
+			current_list->next = ft_create_elem(strs[size--]);
+			current_list = current_list->next;
+		}
+		return (list);
+	}
+	else
+	{
+		list = ft_create_elem(void);
+		return (list);
+	}
+}

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 18:49:05 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 16:47:15 by ezaynabi         ###   ########.fr       */
+/*   Created: 2020/07/30 18:07:54 by ezaynabi          #+#    #+#             */
+/*   Updated: 2020/07/30 19:28:39 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+{	
+	t_list	*curr;
+	t_list	*nxt;
 
-typedef	struct		s_list
-{
-	struct s_list	*next;
-	void			*data;
-
-}					t_list;
-
-t_list	*ft_create_elem(void *data);
-t_list	*ft_list_last(t_list *begin_list);
-
-#endif
+	if (begin_list)
+	{
+		curr = begin_list;
+		free_fct(curr);
+		nxt = curr->next;
+		curr->next = NULL;
+		while (nxt)
+		{
+			curr = nxt;
+			nxt = curr->next;
+			free_fct(curr);
+			curr->next = NULL;
+		}
+	}
+}
