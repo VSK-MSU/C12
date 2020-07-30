@@ -6,7 +6,7 @@
 /*   By: ezaynabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:30:09 by ezaynabi          #+#    #+#             */
-/*   Updated: 2020/07/30 22:22:37 by ezaynabi         ###   ########.fr       */
+/*   Updated: 2020/07/30 22:44:53 by ezaynabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ int		ft_list_size(t_list *begin_list)
 
 	if (begin_list)
 	{
-		list = begin_list;	
+		list = begin_list;
 		counter = 1;
 		while (list->next)
 		{
 			list = list->next;
 			counter++;
 		}
+		return (counter);
 	}
 	else
 		return (0);
@@ -34,18 +35,20 @@ int		ft_list_size(t_list *begin_list)
 
 t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	t_list	*curr;
+	t_list			*curr;
+	int				counter;
 
-	int		counter;
-	if (begin_list && ft_list_size(begin_list) - 1 => nbr)
+	if (begin_list && ft_list_size(begin_list) - 1 >= nbr)
 	{
 		counter = 0;
 		curr = begin_list;
 		while (counter < nbr)
 		{
 			curr = curr->next;
+			counter++;
 		}
 		return (curr);
 	}
-	else (NULL);
+	else
+		return (NULL);
 }
